@@ -106,6 +106,7 @@ public class App {
 
             post("/api/users/add", api.addUser(), new JsonTransformer());
 //            System.out.println(api.getAllUsers().toString());
+
             get("/api/users/getUsers", api.getAllUsers(), new JsonTransformer());
 
         }catch (Exception e){

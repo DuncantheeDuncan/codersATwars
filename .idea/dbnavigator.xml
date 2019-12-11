@@ -34,9 +34,7 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="f76aaa2e-b687-4563-bbe6-1e2392c1eca8">
-      <session name="Session 1" id="5ba71803-80b3-4042-b042-dbdd76dba9bc" />
-    </connection>
+    <connection id="f76aaa2e-b687-4563-bbe6-1e2392c1eca8" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -277,7 +275,6 @@
           <content-type name="SQL" enabled="true" />
           <content-type name="PL/SQL" enabled="true" />
           <content-type name="Groovy" enabled="true" />
-          <content-type name="AIDL" enabled="true" />
           <content-type name="YAML" enabled="true" />
           <content-type name="Manifest" enabled="true" />
         </content-types>
