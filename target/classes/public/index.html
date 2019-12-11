@@ -1,4 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js" integrity="sha256-XmdRbTre/3RulhYk/cOBUMpYlaAp2Rpo/s556u0OIKk=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="app">
+        <h1>Students in Code Wars</h1>
 
+        <table >
+            <tr>
+                <th>First_name</th>
+                <th>Code_wars_username</th>
+            </tr>
+            <tr v-for="user in users" >
+                <td>{{user}}</td>
+<!--                <td>{{user.code_wars_username}}</td>-->
+            </tr>
+        </table>
+
+
+    </div>
+</div>
+
+</body>
 </html>

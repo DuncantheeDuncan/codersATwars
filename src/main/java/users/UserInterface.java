@@ -7,6 +7,6 @@ public interface UserInterface {
 
     String getSingleUser(String codewarUsername);
     void addUsers(String fullname, String code_wars_username);
-    List<String> getUsersByCodewarUsername();
+    List<User> getUsersByCodewarUsername();
 
 }

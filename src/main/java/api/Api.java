@@ -33,7 +33,6 @@ public class Api {
     public Route getSingleUser(){
         return (req, res)->{
 
-
             return null;
 
 
