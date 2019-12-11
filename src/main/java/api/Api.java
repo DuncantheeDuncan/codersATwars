@@ -8,6 +8,8 @@ import users.UserInterface;
 
 public class Api {
 
+
+
     private UserInterface user;
 
     public Api(UserInterface user){
@@ -42,8 +44,7 @@ public class Api {
 
    public Route getAllUsers(){
 
+       System.out.println(user.getUsersByCodewarUsername());
         return (req, res) -> user.getUsersByCodewarUsername();
     }
-
-
 }

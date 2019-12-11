@@ -1,5 +1,6 @@
 package db;
 
+import users.User;
 import users.UserInterface;
 
 import java.sql.*;
@@ -92,19 +93,18 @@ public class DBConnection implements UserInterface {
     }
 
     @Override
-    public List<String> getUsersByCodewarUsername() {
+    public List<User> getUsersByCodewarUsername() {
         
-        List<String> storeUsername = new ArrayList<>();
+        List<User> storeUsername = new ArrayList<>();
         try {
             get_single_user = conn.prepareStatement(GET_SINGLE_USER);
-//            get_single_user.setString(1, codewarsusername);
             ResultSet rs = get_single_user.executeQuery();
             System.out.println(rs.toString());
             //if user exists get its code wars user name
 
             while (rs.next()) {
-//                System.out.println(rs.getString("codewarsusername"));
-                storeUsername.add(rs.getString("codewarsusername"));}
+                storeUsername.add(new User(rs.getString("fullname"), rs.getString("codewarsusername")));
+            }
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
