@@ -30,7 +30,7 @@ public class DBConnection implements UserInterface {
 
     public DBConnection() {
 
-        System.out.println("mfundo ngqanekana");
+//        System.out.println("mfundo ngqanekana");
 //        this.conn = conn;
         try {
             String username = "coder";
