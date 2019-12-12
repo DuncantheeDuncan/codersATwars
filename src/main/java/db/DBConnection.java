@@ -18,7 +18,7 @@ public class DBConnection implements UserInterface {
 
     final String INSERT_STUDENT = "INSERT INTO users(fullname, codewarsusername) VALUES(?, ?)";
     final String CHECK_USER = "SELECT * FROM users WHERE codewarsusername = ?";
-    final String GET_SINGLE_USER = "SELECT codewarsusername FROM users";
+    final String GET_SINGLE_USER = "SELECT * FROM users";
     final String GET_CODEWAREUSER = "SELECT codewarsusername FROM user WHERE codewarsusername = ?";
     final String GET_ALL_USERS = "SELECT * FROM users";
 
@@ -30,10 +30,9 @@ public class DBConnection implements UserInterface {
 
     public DBConnection() {
 
-//        System.out.println("mfundo ngqanekana");
-//        this.conn = conn;
+
         try {
-            String username = "coder";
+            String username = "anele";
             String password = "coder123";
             final String url = "jdbc:postgresql://localhost/students_table";
 
@@ -73,7 +72,7 @@ public class DBConnection implements UserInterface {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-//        return fullname ;
+
     }
 
 
@@ -91,41 +90,24 @@ public class DBConnection implements UserInterface {
             System.out.println("Error: " + e);
         }
 
-
         return code_wars_username;
     }
 
     @Override
     public List<User> getUsersByCodewarUsername() {
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> d4c6ed5b7b5af9ec029652dc4c89b48157590ce1
         List<User> storeUsername = new ArrayList<>();
         try {
             get_single_user = conn.prepareStatement(GET_SINGLE_USER);
             ResultSet rs = get_single_user.executeQuery();
-            System.out.println(rs.toString());
             //if user exists get its code wars user name
-
             while (rs.next()) {
-<<<<<<< HEAD
                 storeUsername.add(new User(rs.getString("fullname"), rs.getString("codewarsusername")));
             }
         }catch (SQLException e){
-=======
-//                System.out.println(rs.getString("codewarsusername"));
-
-                storeUsername.add(new User(rs.getString("fullname"),rs.getString("codewarsusername")));
-                //storeUsername.add(rs.getString("codewarsusername"));
-            }
-        } catch (SQLException e) {
->>>>>>> d4c6ed5b7b5af9ec029652dc4c89b48157590ce1
             System.out.println(e.getMessage());
         }
 
-        System.out.println(storeUsername);
         return storeUsername;
     }
 
