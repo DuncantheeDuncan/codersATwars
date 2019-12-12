@@ -18,7 +18,7 @@ public class DBConnection implements UserInterface {
 
     final String INSERT_STUDENT = "INSERT INTO users(fullname, codewarsusername) VALUES(?, ?)";
     final String CHECK_USER = "SELECT * FROM users WHERE codewarsusername = ?";
-    final String GET_SINGLE_USER = "SELECT codewarsusername FROM users";
+    final String GET_SINGLE_USER = "SELECT * FROM users";
     final String GET_CODEWAREUSER = "SELECT codewarsusername FROM user WHERE codewarsusername = ?";
     final String GET_ALL_USERS = "SELECT * FROM users";
 
