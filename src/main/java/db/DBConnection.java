@@ -30,8 +30,7 @@ public class DBConnection implements UserInterface {
 
     public DBConnection() {
 
-//        System.out.println("mfundo ngqanekana");
-//        this.conn = conn;
+
         try {
             String username = "coder";
             String password = "coder123";
@@ -73,7 +72,7 @@ public class DBConnection implements UserInterface {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-//        return fullname ;
+
     }
 
 
@@ -91,32 +90,24 @@ public class DBConnection implements UserInterface {
             System.out.println("Error: " + e);
         }
 
-
         return code_wars_username;
     }
 
     @Override
     public List<User> getUsersByCodewarUsername() {
-
+        System.out.println("mfundo");
         List<User> storeUsername = new ArrayList<>();
         try {
             get_single_user = conn.prepareStatement(GET_SINGLE_USER);
-//            get_single_user.setString(1, codewarsusername);
             ResultSet rs = get_single_user.executeQuery();
-            System.out.println(rs.toString());
             //if user exists get its code wars user name
-
             while (rs.next()) {
-//                System.out.println(rs.getString("codewarsusername"));
-
-                storeUsername.add(new User(rs.getString("fullname"),rs.getString("codewarsusername")));
-                //storeUsername.add(rs.getString("codewarsusername"));
+                storeUsername.add(new User(rs.getString("fullname"), rs.getString("codewarsusername")));
             }
-        } catch (SQLException e) {
+        }catch (SQLException e){
             System.out.println(e.getMessage());
         }
-
-        System.out.println(storeUsername);
+        System.out.println(storeUsername.size() + " storesUsers");
         return storeUsername;
     }
 

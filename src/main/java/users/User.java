@@ -10,7 +10,6 @@ public class User implements Serializable {
 
     public User(String fullname, String codewarsusername){
 
-        System.out.println(fullname + " " + codewarsusername);
         this.fullname = fullname;
         this.codewarsusername = codewarsusername;
     }
