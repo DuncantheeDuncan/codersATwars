@@ -70,10 +70,10 @@ console.log("woooooooooooooooooooooooooooooooooooo");
     });
 
 //    codersAtWar.getUsers();// commented
-console.log("name " + fullname )
+
 
 //    setInterval(function(){
-//        codersAtWar.addUser();
+        codersAtWar.addUser();
 //        console.log("...");
 //    }, 1000);
 })
