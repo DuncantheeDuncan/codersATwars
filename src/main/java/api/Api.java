@@ -108,8 +108,6 @@ public class Api {
             User userInputs = new Gson().fromJson(req.body(), User.class);
 
             user.addUsers(userInputs.getFullname(), userInputs.getCodewarsUserName());
-
-
             return new Gson().toJson(new User(userInputs.getFullname(), userInputs.getCodewarsUserName()));
         };
     }

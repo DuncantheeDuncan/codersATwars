@@ -14,6 +14,14 @@ public class User implements Serializable {
         this.codewarsusername = codewarsusername;
     }
 
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public void setCodewarsusername(String codewarsusername) {
+        this.codewarsusername = codewarsusername;
+    }
+
     public String getFullname() {
         return this.fullname;
     }

@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
         data: {
             users : [],
             i : 0,
-            selectedUser : {}
+            selectedUser : {},
+            name : "",
+            username : ""
         },
         methods: {
             getUsers: function(){
@@ -26,20 +28,23 @@ document.addEventListener("DOMContentLoaded", function() {
                        })
             },
 //---
-processForm: function(e){
+    AddUser : function(){
+        const self = this;
+        const params = {
+        name : self.name,
+        username : self.username
+    };
+    axios
+        .post("/api/users/add", params)
+        .then(function(result){
+              const data = result.data;
+              //console.log(data);
+              self.name = data.name;
+              self.username = data.username;
+              self.getUserData();
+              //self.clear();
+        });
 
-e.preventDefault();
-
-let self = this;
-
-axios
-.post("/api/users/add",{fullname:self.fullname, codewarsusername: self.codewarsusername})
-console.log("name " + fullname )
-.then(function (res){})
-.catch(function (e){ console.log(e);})
-
-self.clear();
-console.log("woooooooooooooooooooooooooooooooooooo");
 },
 //---
             getUserData : function(username) {
@@ -73,7 +78,7 @@ console.log("woooooooooooooooooooooooooooooooooooo");
 
 
 //    setInterval(function(){
-        codersAtWar.addUser();
+//        codersAtWar.addUser();
 //        console.log("...");
 //    }, 1000);
 })

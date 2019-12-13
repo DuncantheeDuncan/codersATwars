@@ -15,13 +15,33 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js" integrity="sha256-XmdRbTre/3RulhYk/cOBUMpYlaAp2Rpo/s556u0OIKk=" crossorigin="anonymous"></script>    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script src="app.js"></script>
-    <link rel="stylesheet" href="styles.css">
-
+    <link rel = "stylesheet" type = "text/css" href = "style.css" />
 </head>
 <body>
 
 <script>
 
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 
 function showCard(){
 
@@ -53,6 +73,12 @@ table.style.display = "show";
 <!--                    <button type="button" class="btn btn-success">Add</button>-->
                 <a href=" " class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Register</a>
             </li>
+<!--            search-->
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+            </li>
         </ul>
     </div>
 </nav>
@@ -64,7 +90,7 @@ table.style.display = "show";
                 <span aria-hidden="true">&times;</span>
     </button>
         </div>
-        <form action="">
+        <form action="/" method="post" @submit = "AddUser" >
         <div class="modal-body mx-3">
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -87,11 +113,11 @@ table.style.display = "show";
 
         <h1 style="text-align: center">Students CodeWars Ranks</h1>
 
-        <table id="table" >
+        <table id="table" class="table" >
             <thead>
             <tr>
-                <th>First_name</th>
-                <th >Code_wars_username</th>
+                <th scope="col">First_name</th>
+                <th scope="col" >Code_wars_username</th>
 
             </tr>
             </thead>
@@ -140,15 +166,17 @@ table.style.display = "show";
 <!--                    <body>-->
 
                     <div id="card" class="card" style="display:none" >
-                    <h2 style="text-align:center">User Profile</h2>
+
+                        <span><h2 style="text-align:center">User Profile</h2></span>
 
                         <p>Name:  {{selectedUser.name}} </p>
                         <p>Username: {{selectedUser.username}}  </p>
                         <p>Honor: {{selectedUser.honor}}</p>
-                        <div style="margin: 24px 0;">
-                            <a href="github.com"><i class="fa fa-github">Github</i></a>
-                            <br/>
-                            <button onclick="window.location.reload();">back</button>
+<!--                        <p>completed: {{select.completed}}</p>-->
+<!--                        <div style="margin: 24px 0;">-->
+<!--                            <a href="github.com"><i class="fa fa-github">Github</i></a>-->
+<!--                            <br/>-->
+                            <button class="button" onclick="window.location.reload();">back</button>
                         </div>
                     </div>
 <!--                    </body>-->

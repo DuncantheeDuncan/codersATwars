@@ -49,6 +49,7 @@ public class App {
         Api api = new Api(db);
 
         staticFiles.location("/public");
+        getHerokuAssignedPort();
 
         after((request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
