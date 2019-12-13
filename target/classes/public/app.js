@@ -7,9 +7,17 @@ document.addEventListener("DOMContentLoaded", function() {
             i : 0,
             selectedUser : {},
             name : "",
-            username : ""
+            username : "",
+            showModal : false
         },
         methods: {
+
+            showUserAddModal : function() {
+                this.showModal = true;
+            },
+            hideUserAddModal : function() {
+                this.showModal = false;
+            },
             getUsers: function(){
                 const me = this;
 
@@ -31,17 +39,18 @@ document.addEventListener("DOMContentLoaded", function() {
     AddUser : function(){
         const self = this;
         const params = {
-        name : self.name,
-        username : self.username
-    };
+            name : self.name,
+            username : self.username
+        };
     axios
         .post("/api/users/add", params)
         .then(function(result){
               const data = result.data;
-              //console.log(data);
+              self.showModal = false;
+              console.log(data);
               self.name = data.name;
               self.username = data.username;
-              self.getUserData();
+              self.getUsers();
               //self.clear();
         });
 

@@ -5,30 +5,30 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 
-    private String fullname;
-    private String codewarsusername;
+    private String name;
+    private String username;
 
-    public User(String fullname, String codewarsusername){
-
-        this.fullname = fullname;
-        this.codewarsusername = codewarsusername;
+    public User() {
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public User(String name, String username) {
+        this.name = name;
+        this.username = username;
     }
 
-    public void setCodewarsusername(String codewarsusername) {
-        this.codewarsusername = codewarsusername;
+    public String getName() {
+        return name;
     }
 
-    public String getFullname() {
-        return this.fullname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-
-    public String getCodewarsUserName() {
-        return this.codewarsusername;
+    public String getUsername() {
+        return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
