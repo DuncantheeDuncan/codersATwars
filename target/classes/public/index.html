@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Document</title>
     <meta charset="utf-8">
@@ -8,6 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js" integrity="sha256-XmdRbTre/3RulhYk/cOBUMpYlaAp2Rpo/s556u0OIKk=" crossorigin="anonymous"></script>    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script src="app.js"></script>
@@ -15,6 +19,28 @@
 
 </head>
 <body>
+
+<script>
+
+
+function showCard(){
+
+var showCard = document.getElementById("card");
+var table = document.getElementById("table");
+if(showCard.style.display == "none"){
+showCard.style.display = "block";
+table.style.display = "none";
+
+}else{
+showCard.style.display = "none";
+table.style.display = "show";
+
+}
+
+}
+
+
+</script>
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <a class="navbar-brand" >AB_Coders</a>
@@ -58,51 +84,79 @@
 <br>
 <div class = "app">
     <div class="container">
+
         <h1 style="text-align: center">Students CodeWars Ranks</h1>
 
-        <table class="table table-hover">
+        <table id="table" >
             <thead>
             <tr>
                 <th>First_name</th>
-                <th>Code_wars_username</th>
+                <th >Code_wars_username</th>
 
             </tr>
             </thead>
             <tbody>
+
             <tr v-for="user in users">
-                <td>
+                <td >
                     {{user.name}}
                 </td>
-                <td>
+                <td onclick="showCard()">
                     <span  v-on:click="getUserData(user.username)" >{{user.username}}</span>
                 </td>
             </tr>
-            <tr>
-                <td colspan="3">
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                        <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+            </tbody>
+        </table>
 
-                    </head>
-                    <body>
+
+<!--        <table  class="table table-hover">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>First_name</th>-->
+<!--                <th >Code_wars_username</th>-->
+<!---->
+<!--            </tr>-->
+<!--            </thead>-->
+
+<!--            <tbody>-->
+<!--            <tr v-for="user in users">-->
+<!--                <td>-->
+<!--                    {{user.name}}-->
+<!--                </td>-->
+<!--                <td>-->
+<!---->
+<!--                    <span  v-on:click="getUserData(user.username)" >{{user.username}}</span>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td colspan="3">-->
+<!--                    <!DOCTYPE html>-->
+<!--                    <html>-->
+<!--                    <head>-->
+<!--                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--                        <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>-->
+<!---->
+<!--                    </head>-->
+<!--                    <body>-->
+
+                    <div id="card" class="card" style="display:none" >
                     <h2 style="text-align:center">User Profile</h2>
-                    <div class="card">
+
                         <p>Name:  {{selectedUser.name}} </p>
                         <p>Username: {{selectedUser.username}}  </p>
                         <p>Honor: {{selectedUser.honor}}</p>
                         <div style="margin: 24px 0;">
                             <a href="github.com"><i class="fa fa-github">Github</i></a>
                             <br/>
+                            <button onclick="window.location.reload();">back</button>
                         </div>
                     </div>
-                    </body>
-                    </html>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<!--                    </body>-->
+<!--                    </html>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
 
         <div class="vivo"></div>>
 

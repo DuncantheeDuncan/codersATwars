@@ -53,6 +53,7 @@ public class Api {
         DBConnection connection = new DBConnection();
         List<User> list = connection.getUsersByCodewarUsername();
         List<CodewarsData> pushInto = new ArrayList<>();
+        //
         for (User user : list) {
 
 

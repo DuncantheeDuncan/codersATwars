@@ -25,14 +25,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
                        })
             },
+//---
+processForm: function(e){
 
+e.preventDefault();
+
+let self = this;
+
+axios
+.post("/api/users/add",{fullname:self.fullname, codewarsusername: self.codewarsusername})
+console.log("name " + fullname )
+.then(function (res){})
+.catch(function (e){ console.log(e);})
+
+self.clear();
+console.log("woooooooooooooooooooooooooooooooooooo");
+},
+//---
             getUserData : function(username) {
                 const self = this;
                 axios
                     .get(`https://codewars-proxy.herokuapp.com/api/user/${username}`)
                     .then(function(result){
                         //console.log(result.data);
-                        console.log("Name= " + result.data.name + "\n" + "Username = " + result.data.username + "\n" + "Honor= " +result.data.honor);
+                        console.log("Name= " + result.data.name +
+                         "\n" + "Username = " +
+                          result.data.username +
+                           "\n" + "Honor= "
+                           +result.data.honor);
+
                         self.selectedUser = result.data;
                     });
 
@@ -48,11 +69,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-//    codersAtWar.getUsers();
+//    codersAtWar.getUsers();// commented
 
 
 //    setInterval(function(){
-//        codersAtWar.addUser();
+        codersAtWar.addUser();
 //        console.log("...");
 //    }, 1000);
 })
