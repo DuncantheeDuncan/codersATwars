@@ -32,7 +32,7 @@ public class DBConnection implements UserInterface {
 
 
         try {
-            String username = "anele";
+            String username = "coder";
             String password = "coder123";
             final String url = "jdbc:postgresql://localhost/students_table";
 
@@ -95,7 +95,7 @@ public class DBConnection implements UserInterface {
 
     @Override
     public List<User> getUsersByCodewarUsername() {
-
+        System.out.println("mfundo");
         List<User> storeUsername = new ArrayList<>();
         try {
             get_single_user = conn.prepareStatement(GET_SINGLE_USER);
@@ -107,7 +107,7 @@ public class DBConnection implements UserInterface {
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
-
+        System.out.println(storeUsername.size() + " storesUsers");
         return storeUsername;
     }
 

@@ -1,28 +1,94 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     const codersAtWar = new Vue({
-
-        "el": ".app",
-
+        el: ".app",
         data: {
-            codewarslist : []
+            users : [],
+            i : 0,
+            selectedUser : {},
+            name : "",
+            username : "",
+            showModal : false
         },
         methods: {
-            getUsers: function(){
 
-                let self = this;
+            showUserAddModal : function() {
+                this.showModal = true;
+            },
+            hideUserAddModal : function() {
+                this.showModal = false;
+            },
+            getUsers: function(){
+                const me = this;
+
+                this.users = [];
                 axios
-                .get("/api/users/getUsers")
+                    .get("/api/users/getUsers")
                     .then(function(coderResults){
-//                        console.log(coderResults.data);
-                        console.log(JSON.parse(coderResults.data[0]))
-                        coderResults.forEach(function (results) {
-                        console.log(results.data)
-                    })
-                })
-            }
+
+                        const results = coderResults.data.map(function(user) {
+                            user.url = `https://www.codewars.com/api/v1/users/${user.username}`;
+                            return user;
+                        });
+                        const realData = results;
+                         me.users = realData;
+
+                       })
+            },
+//---
+    AddUser : function(){
+        const self = this;
+        const params = {
+            name : self.name,
+            username : self.username
+        };
+    axios
+        .post("/api/users/add", params)
+        .then(function(result){
+              const data = result.data;
+              self.showModal = false;
+              console.log(data);
+              self.name = data.name;
+              self.username = data.username;
+              self.getUsers();
+              //self.clear();
+        });
+
+},
+//---
+            getUserData : function(username) {
+                const self = this;
+                axios
+                    .get(`https://codewars-proxy.herokuapp.com/api/user/${username}`)
+                    .then(function(result){
+                        //console.log(result.data);
+                        console.log("Name= " + result.data.name +
+                         "\n" + "Username = " +
+                          result.data.username +
+                           "\n" + "Honor= "
+                           +result.data.honor);
+
+                        self.selectedUser = result.data;
+                    });
+
+            },
+
+
+
+
+
+        },
+        mounted : function() {
+            this.getUsers();
         }
-    })
-    codersAtWar.getUsers();
+    });
+
+//    codersAtWar.getUsers();// commented
+
+
+//    setInterval(function(){
+//        codersAtWar.addUser();
+//        console.log("...");
+//    }, 1000);
 })
 

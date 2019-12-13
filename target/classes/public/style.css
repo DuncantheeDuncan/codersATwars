@@ -1,0 +1,97 @@
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.title {
+  color: grey;
+  font-size: 18px;
+}
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+/*
+
+#table {
+  border-collapse: collapse; */
+/* Collapse borders *//*
+
+  width: 69%; */
+/* Full-width *//*
+
+  border: 1px solid #ddd; */
+/* Add a grey border *//*
+
+  font-size: 18px; */
+/* Increase font-size *//*
+
+  margin-left: auto;
+  	margin-right: auto;
+  	padding-top: 5%;
+}
+#table th, #table td {
+  text-align: left; */
+/* Left-align text *//*
+
+  padding: 12px; */
+/* Add padding *//*
+
+}
+#table tr {
+  */
+/* Add a bottom border to all table rows *//*
+
+  border-bottom: 1px solid #ddd;
+}
+#table tr.header, #table tr:hover {
+  */
+/* Add a grey background color to the table header and on hover *//*
+
+  background-color: rgb(54, 60, 94);
+}
+
+#table li {
+   Add a bottom border to all table rows
+  border-bottom: 1px solid #ddd;
+}
+#table li {
+  text-align: left; */
+/* Left-align text *//*
+
+  padding: 12px; */
+/* Add padding *//*
+
+}*/
+.button {
+   background-color: #ddd;
+   border: none;
+   color: black;
+   padding: 10px 20px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 16px;
+ }

@@ -1,17 +1,11 @@
 package main;
 import api.Api;
 import db.DBConnection;
+//import spark.Filter;
 import spark.ModelAndView;
-import spark.template.handlebars.HandlebarsTemplateEngine;
+import spark.Service;
 import transformer.JsonTransformer;
 import users.User;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static spark.Spark.*;
 
@@ -55,6 +49,14 @@ public class App {
         Api api = new Api(db);
 
         staticFiles.location("/public");
+        getHerokuAssignedPort();
+
+        after((request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+            response.header("Access-Control-Allow-Methods", "GET");
+        });
+
+
 
         try {
 //            get("/api/codewars/users/:users", api.getSingleUser(), new JsonTransformer());
@@ -67,9 +69,8 @@ public class App {
             System.out.println(e.getMessage());
         }
 
-
     }
 
-
-
+    private static class Filter {
+    }
 }

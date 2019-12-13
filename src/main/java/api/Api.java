@@ -6,13 +6,32 @@ import spark.Route;
 import users.User;
 import users.UserInterface;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+
+
+class CodewarsData {
+
+    String username;
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+}
 
 
 public class Api {
@@ -20,73 +39,56 @@ public class Api {
 
     private UserInterface user;
 
-    public Api(UserInterface user){
+    public Api(UserInterface user) {
         this.user = user;
     }
 
-    public List<String> getCodewarsJson(){
+    public List<CodewarsData> getCodewarsJson() {
 
         DBConnection connection = new DBConnection();
         List<User> list = connection.getUsersByCodewarUsername();
-        List<String> pushInto = new ArrayList<>();
-        for (User user: list){
+        List<CodewarsData> pushInto = new ArrayList<>();
+        //
+        for (User user : list) {
 
-        try {
-            URL url = new URL("https://www.codewars.com/api/v1/users/"+user.getCodewarsUserName());
 
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
+            CodewarsData cwd = new CodewarsData();
 
-            if (conn.getResponseCode() != 200) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
-            }
+            cwd.setName(user.getName());
+            cwd.setUsername(user.getUsername());
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(
-                    (conn.getInputStream())));
+            pushInto.add(cwd);
 
-            String output;
-//            System.out.println("Output from Server .... \n");
-            while ((output = br.readLine()) != null) {
-
-                pushInto.add(output);
-
-            }
-            conn.disconnect();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         }
 
         return pushInto;
     }
 
-   public Route addUser(){
-        return (req, res) ->{
+    public Route addUser() {
+        return (req, res) -> {
             res.type("application/json");
             System.out.println(req.body());
 
+            System.out.println(req.body());
+
             User userInputs = new Gson().fromJson(req.body(), User.class);
-
-             user.addUsers(userInputs.getFullname(),  userInputs.getCodewarsUserName());
-
-
-            return new Gson().toJson(new User(userInputs.getFullname(), userInputs.getCodewarsUserName()));
+            user.addUsers(userInputs.getName(), userInputs.getUsername());
+            return new Gson().toJson(new User(userInputs.getName(), userInputs.getUsername()));
         };
     }
 
-    public Route getSingleUser(){
-        return (req, res)->{
+    public Route getSingleUser() {
+        return (req, res) -> {
 
             return null;
 
-
         };
     }
 
-   public Route getAllUsers(){
-        return (req, res) -> getCodewarsJson();
+    public Route getAllUsers() {
+        return (req, res) -> {
+            res.type("application/json");
+            return getCodewarsJson();
+        };
     }
 }
