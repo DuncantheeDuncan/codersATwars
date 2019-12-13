@@ -28,20 +28,21 @@ public class DBConnection implements UserInterface {
     PreparedStatement get_single_user;
     PreparedStatement get_user_By_codewaresusername;
 
-    public DBConnection() {
-
-
-        try {
-            String username = "coder";
-            String password = "coder123";
-            final String url = "jdbc:postgresql://localhost/students_table";
-
-            conn = DriverManager.getConnection(url, username, password);
-
-        } catch (SQLException e) {
-            System.out.println("Failed to connect to the database: " + e);
-            e.printStackTrace();
-        }
+    public DBConnection(Connection conn) {
+        this.conn = conn;
+//
+//
+//        try {
+//            String username = "coder";
+//            String password = "coder123";
+//            final String url = "jdbc:postgresql://localhost/students_table";
+//
+//            conn = DriverManager.getConnection(url, username, password);
+//
+//        } catch (SQLException e) {
+//            System.out.println("Failed to connect to the database: " + e);
+//            e.printStackTrace();
+//        }
 
     }
 

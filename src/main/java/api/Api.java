@@ -6,8 +6,12 @@ import spark.Route;
 import users.User;
 import users.UserInterface;
 
+import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static main.App.getDatabaseConnection;
 
 
 class CodewarsData {
@@ -43,9 +47,9 @@ public class Api {
         this.user = user;
     }
 
-    public List<CodewarsData> getCodewarsJson() {
+    public List<CodewarsData> getCodewarsJson() throws URISyntaxException, SQLException {
 
-        DBConnection connection = new DBConnection();
+        DBConnection connection = new DBConnection(getDatabaseConnection("jdbc:postgresql://localhost/students_table"));
         List<User> list = connection.getUsersByCodewarUsername();
         List<CodewarsData> pushInto = new ArrayList<>();
         //

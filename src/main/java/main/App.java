@@ -24,7 +24,7 @@ public class App {
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 
-    static Connection getDatabaseConnection(String defualtJdbcUrl) throws URISyntaxException, SQLException {
+    public static Connection getDatabaseConnection(String defualtJdbcUrl) throws URISyntaxException, SQLException {
         ProcessBuilder processBuilder = new ProcessBuilder();
         String database_url = processBuilder.environment().get("DATABASE_URL");
         if (database_url != null) {
@@ -50,13 +50,14 @@ public class App {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws URISyntaxException, SQLException {
 
-        DBConnection db = new DBConnection();
+        DBConnection db = new DBConnection(getDatabaseConnection("jdbc:postgresql://localhost/students_table"));
         Api api = new Api(db);
 
         staticFiles.location("/public");
-        getHerokuAssignedPort();
+//        getHerokuAssignedPort();
+        port(getHerokuAssignedPort());
 
         after((request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
