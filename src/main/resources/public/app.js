@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 axios
                     .get(`https://codewars-proxy.herokuapp.com/api/user/${username}`)
                     .then(function(result){
-                        //console.log(result.data);
+                        console.log(result.data);
                         console.log("Name= " + result.data.name +
                          "\n" + "Username = " +
                           result.data.username +
@@ -72,11 +72,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
 
             },
-
-
-
-
-
         },
         mounted : function() {
             this.getUsers();
