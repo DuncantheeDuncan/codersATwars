@@ -9,7 +9,7 @@ has been up-to, how far are they with their katas as to what they still have to 
 
 
 # Linkt to live Application
-![](https://secure-dusk-18717.herokuapp.com/)
+https://secure-dusk-18717.herokuapp.com
 
 
 
