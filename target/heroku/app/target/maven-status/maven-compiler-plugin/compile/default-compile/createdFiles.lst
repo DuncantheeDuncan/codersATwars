@@ -1,8 +1,0 @@
-users/UserInterface.class
-main/App.class
-main/App$Filter.class
-api/CodewarsData.class
-db/DBConnection.class
-api/Api.class
-transformer/JsonTransformer.class
-users/User.class

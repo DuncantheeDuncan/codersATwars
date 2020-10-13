@@ -32,8 +32,9 @@ public class DBConnection implements UserInterface {
 
 
         try {
-            String username = "coder";
-            String password = "coder123";
+//            String username = "coder";
+            String username = "duncan";
+            String password = "duncan123";
             final String url = "jdbc:postgresql://localhost/students_table";
 
             conn = DriverManager.getConnection(url, username, password);

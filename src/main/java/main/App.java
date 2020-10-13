@@ -7,6 +7,12 @@ import spark.Service;
 import transformer.JsonTransformer;
 import users.User;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import static spark.Spark.*;
 
 public class App {
@@ -19,6 +25,7 @@ public class App {
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 
+//    -----
 //    static Connection getDatabaseConnection(String defualtJdbcUrl) throws URISyntaxException, SQLException {
 //        ProcessBuilder processBuilder = new ProcessBuilder();
 //        String database_url = processBuilder.environment().get("DATABASE_URL");
@@ -26,8 +33,8 @@ public class App {
 //
 //            URI uri = new URI(database_url);
 //            String[] hostParts = uri.getUserInfo().split(":");
-//            String username = "coder";
-//            String password = "coder123";
+//            String username = "duncan";
+//            String password = "duncan123";
 //            String host = uri.getHost();
 //
 //            int port = uri.getPort();
@@ -42,7 +49,7 @@ public class App {
 //        return DriverManager.getConnection(defualtJdbcUrl);
 //
 //    }
-
+// ------
     public static void main(String[] args) {
 
         DBConnection db = new DBConnection();
@@ -50,6 +57,13 @@ public class App {
 
         staticFiles.location("/public");
         getHerokuAssignedPort();
+//        try {
+//            getDatabaseConnection("jdbc:postgresql://localhost/students_table");
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
 
         after((request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");

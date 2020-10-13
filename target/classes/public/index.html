@@ -70,14 +70,14 @@ table.style.display = "show";
 <br>
 <div class="app">
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a class="navbar-brand">AB_Coders</a>
+        <a class="navbar-brand">AB Coders</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <input type="button" class="btn btn-primary btn-rounded mb-4" v-on:click="showUserAddModal" >Register</input>
+                    <input type="button" class="btn btn-primary btn-rounded mb-4" v-on:click="showUserAddModal" value="Register">Register</input>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -93,8 +93,10 @@ table.style.display = "show";
         <table id="table" class="table">
             <thead>
             <tr>
-                <th scope="col">First_name</th>
-                <th scope="col">Code_wars_username</th>
+                <th scope="col">First Name(s)</th>
+<!--                First_name-->
+                <th scope="col">Code wars username</th>
+<!--                Code_wars_username-->
 
             </tr>
             </thead>
@@ -128,7 +130,7 @@ table.style.display = "show";
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Register student</h4>
+                    <h4 class="modal-title w-100 font-weight-bold">Add Student</h4>
                     <button type="button" class="close"  aria-label="Close" v-on:click="hideUserAddModal" >
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -137,12 +139,12 @@ table.style.display = "show";
                 <div class="modal-body mx-3">
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" placeholder="Enter name" id="name" required v-model="name" >
+                        <input type="text" class="form-control" placeholder="Enter names" id="name" required v-model="name" >
                     </div>
 
                     <div class="form-group">
-                        <label for="username">Student User:</label>
-                        <input type="text" class="form-control" placeholder="Enter username" id="username" v-model="username" required>
+                        <label for="username">User Name:</label>
+                        <input type="text" class="form-control" placeholder="Enter code wars username" id="username" v-model="username" required>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary" v-on:click="AddUser">Submit</button>

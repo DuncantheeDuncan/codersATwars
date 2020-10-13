@@ -1,6 +1,6 @@
-/home/coder/Projects/codersATwars/src/main/java/db/DBConnection.java
-/home/coder/Projects/codersATwars/src/main/java/api/Api.java
-/home/coder/Projects/codersATwars/src/main/java/transformer/JsonTransformer.java
-/home/coder/Projects/codersATwars/src/main/java/users/UserInterface.java
-/home/coder/Projects/codersATwars/src/main/java/users/User.java
-/home/coder/Projects/codersATwars/src/main/java/main/App.java
+/home/duncan/projects/codersATwars/src/main/java/users/UserInterface.java
+/home/duncan/projects/codersATwars/src/main/java/users/User.java
+/home/duncan/projects/codersATwars/src/main/java/db/DBConnection.java
+/home/duncan/projects/codersATwars/src/main/java/api/Api.java
+/home/duncan/projects/codersATwars/src/main/java/transformer/JsonTransformer.java
+/home/duncan/projects/codersATwars/src/main/java/main/App.java
